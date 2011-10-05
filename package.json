@@ -1,0 +1,24 @@
+{
+  "name": "no-mad",
+  "description": "Campfire bot",
+  "keywords": [
+    "campfire",
+    "chat",
+    "bot"
+  ],
+  "author": "Alexey Blinov",
+  "version": "0.0.1",
+  "directories": {
+    "lib": "./lib"
+  },
+  "main": "./lib/robot.js",
+  "dependencies": {
+    "smores": ">=0.0.3"
+  },
+  "devDependencies": {
+    "coffee-script": ">=1.1.2"
+  },
+  "engines": {
+    "node": "~0.4"
+  }
+}
