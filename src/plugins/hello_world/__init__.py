@@ -26,4 +26,5 @@ class Fake(object):
         )
 
     def hello_callback(self, cmd, message):
-        return u"Привет, дорогой %s" % message.user.name
+        message.room.speak("Plugin can talk too!")
+        message.room.speak(u"Привет, дорогой %s" % message.user.name)

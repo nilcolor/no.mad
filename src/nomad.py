@@ -45,8 +45,8 @@ def incoming(message):
                 for demon in demons[nick]:
                     if demon['token'].match(command):
                         to_say = demon['cb'](command, message)
-                        assert to_say is not None, "Plugin callback HAVE TO RETURN SOMETHING!"
-                        room.speak(to_say)
+                        if to_say:
+                            room.speak(to_say)
             try:
                 to_say
             except Exception:
