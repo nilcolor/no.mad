@@ -44,12 +44,12 @@ def incoming(message):
             for nick in demons:
                 for demon in demons[nick]:
                     if demon['token'].match(command):
-                        to_say = demon['cb'](command)
+                        to_say = demon['cb'](command, message)
                         assert to_say is not None, "Plugin callback HAVE TO RETURN SOMETHING!"
                         room.speak(to_say)
             try:
                 to_say
-            except Exception, e:
+            except Exception:
                 room.speak('I doesn\'t know this command yet: "%s"' % command)
     elif message.is_upload():
         print "-- %s UPLOADED FILE %s: %s" % (
@@ -71,7 +71,7 @@ pm = PluginLoader("%s/src/plugins" % PROJECT_ROOT)
 for p in pm.plugins:
     x = pm.init_plugin(p)
     token, cb = x.get_link()
-    hsah = hashlib.md5(token.pattern).hexdigest()
+    hsah = hashlib.md5(token.pattern.encode('utf-8')).hexdigest()
     pkg = {
         "token": token,
         "cb": cb,

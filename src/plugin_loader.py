@@ -33,13 +33,13 @@ class PluginLoader:
 
         try:
             __import__(name)
-        except ImportError, e:
+        except ImportError:
             print "Import error for: %s" % name
             return
 
         plugin = sys.modules[name]
 
-        assert hasattr(plugin, "info"), "You have to have `info` dict within you plugin. Check hello_world example."
+        assert hasattr(plugin, "info"), "You have to have `info` dict within you plugin. Check 'ping' example."
 
         if hasattr(plugin, plugin.info["main"]):
             self.plugins[plugin.info["name"]] = plugin

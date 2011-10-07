@@ -1,29 +1,29 @@
 # -*- coding: utf-8 -*-
 """
-    Fake Hello World plugin.
+    Fake Ping plugin a-la "Hello World".
 
     Can be used as plugin template. For sure.
 """
 import re
 
 info = {
-    "name": "hello_world",
+    "name": "ping",
     "description": """Some long and boring plugin description.
     And yes - it can be multiline! I hope so...""",
     "author": "Alexey \"NilColor\" Blinov",
     "version": "0.0.1",
-    "main": "Fake"
+    "main": "Ping"
 }
 
-class Fake(object):
+class Ping(object):
     def __init__(self, *args, **kwargs):
         pass
 
     def get_link(self):
         return (
-            re.compile(ur'^привет', re.L | re.I),
-            self.hello_callback,
+            re.compile(r'^ping', re.L | re.I),
+            self.ping_callback,
         )
 
-    def hello_callback(self, cmd, message):
-        return u"Привет, дорогой %s" % message.user.name
+    def ping_callback(self, cmd, message):
+        return "PONG. Hell'yes!"
